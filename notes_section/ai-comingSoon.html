@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coming Soon</title>
+  <style>
+    /* General Body and Background Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(145deg, #2b0a45, #5f23a3);
+      color: #e0d7f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      background-size: cover;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 2;
+      padding: 0 20px;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #e4baff;
+      text-shadow: 0 0 20px #7c4dff, 0 0 30px #7c4dff;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: #d6c0ff;
+      margin: 20px 0 40px 0;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      margin: 0;
+    }
+
+    .countdown div {
+      background: rgba(50, 50, 75, 0);
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      backdrop-filter: blur(10px);
+      width: 100px;
+      margin: 10px;
+    }
+
+    .countdown div span {
+      display: block;
+      font-size: 3rem;
+      font-weight: 600;
+      color: #7c4dff;
+      margin-bottom: 10px;
+      animation: glowing 1.5s ease-in-out infinite;
+    }
+
+    .countdown div p {
+      margin: 0;
+      font-size: 1rem;
+      color: #e0d7f5;
+    }
+
+    /* Glowing animation for countdown numbers */
+    @keyframes glowing {
+      0% {
+        text-shadow: 0 0 5px #7c4dff, 0 0 10px #7c4dff, 0 0 15px #7c4dff, 0 0 20px #7c4dff;
+      }
+
+      50% {
+        text-shadow: 0 0 10px #7c4dff, 0 0 20px #7c4dff, 0 0 30px #7c4dff, 0 0 40px #7c4dff;
+      }
+
+      100% {
+        text-shadow: 0 0 5px #7c4dff, 0 0 10px #7c4dff, 0 0 15px #7c4dff, 0 0 20px #7c4dff;
+      }
+    }
+
+    .neon-button {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 15px 30px;
+      background: none;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: 2px solid #7c4dff;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .neon-button:hover {
+      color: #7c4dff;
+      background: #1e1938;
+      box-shadow: 0 0 20px #7c4dff, 0 0 40px #7c4dff, 0 0 60px #7c4dff;
+    }
+
+    .neon-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(124, 77, 255, 0.4), transparent);
+      transform: skewX(-30deg);
+      transition: left 0.5s ease;
+    }
+
+    .neon-button:hover::before {
+      left: 100%;
+    }
+
+    /* Floating glow circle effects */
+    .glow-circle {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124, 77, 255, 0.4), transparent);
+      animation: glow 6s infinite alternate;
+      z-index: -1;
+    }
+
+    .glow-circle:nth-child(2) {
+      width: 300px;
+      height: 300px;
+      top: 20%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .glow-circle:nth-child(3) {
+      width: 500px;
+      height: 500px;
+      bottom: 10%;
+      left: 15%;
+      animation-delay: 4s;
+    }
+
+    @keyframes glow {
+      0% {
+        transform: scale(1) translateY(0);
+      }
+
+      100% {
+        transform: scale(1.2) translateY(-20px);
+      }
+    }
+
+    /* Back to Home button */
+    .back-to-home {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: 2px solid #7c4dff;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-to-home:hover {
+      color: #7c4dff;
+      background: #1e1938;
+      box-shadow: 0 0 20px #7c4dff, 0 0 40px #7c4dff, 0 0 60px #7c4dff;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+      body {
+        height: auto;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+
+      .countdown {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .countdown div {
+        width: 80px;
+        padding: 15px;
+      }
+
+      .neon-button {
+        font-size: 1rem;
+        padding: 12px 25px;
+      }
+
+      .back-to-home {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        height: auto;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .countdown {
+        flex-direction: column;
+      }
+
+      .countdown div {
+        width: 70px;
+        padding: 10px;
+        margin-bottom: 15px;
+      }
+
+      .neon-button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+
+      .back-to-home {
+        font-size: 0.9rem;
+        padding: 7px 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow-circle"></div>
+  <div class="glow-circle"></div>
+  <div class="glow-circle"></div>
+
+  <!-- Back to Home Button -->
+  <a href="../home.html" class="back-to-home">Back to Home</a>
+
+  <div class="container">
+    <h1>AI Coming Soon</h1>
+    <p>We're working on something exciting! Stay tuned for the launch.</p>
+
+    <!-- Countdown Timer -->
+    <div class="countdown">
+      <div>
+        <span id="days">00</span>
+        <p>Days</p>
+      </div>
+      <div>
+        <span id="hours">00</span>
+        <p>Hours</p>
+      </div>
+      <div>
+        <span id="minutes">00</span>
+        <p>Minutes</p>
+      </div>
+      <div>
+        <span id="seconds">00</span>
+        <p>Seconds</p>
+      </div>
+    </div>
+
+    <!-- Button -->
+    <a href="#" class="neon-button">Notify Me</a>
+  </div>
+
+  <script>
+    const launchDate = new Date("2024-12-31T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const timeLeft = launchDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days < 10 ? `0${days}` : days;
+      document.getElementById("hours").textContent = hours < 10 ? `0${hours}` : hours;
+      document.getElementById("minutes").textContent = minutes < 10 ? `0${minutes}` : minutes;
+      document.getElementById("seconds").textContent = seconds < 10 ? `0${seconds}` : seconds;
+
+      if (timeLeft < 0) {
+        clearInterval(countdownInterval);
+        countdown.innerHTML = "<h2>We're live!</h2>";
+      }
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+
+</html>
